@@ -11,7 +11,7 @@ function App() {
 
   const [buyValue, setBuyValue] = useState('');
   const API_HOST = 'http://localhost:3001/api'
-  const INVENTORY_API_URL = `${API_HOST}/portfolio`;
+  const Stock_API_URL = `${API_HOST}/portfolio`;
   const [data, setData] = useState([]);
 
 
@@ -46,14 +46,14 @@ function App() {
 
   };
 
-  const fetchInventory = () => {
+  const fetchStock = () => {
 
-    fetch(`${INVENTORY_API_URL}`)
+    fetch(`${Stock_API_URL}`)
         .then(res => res.json())
         .then(json => setData(json));
   }
   useEffect(() => {
-    fetchInventory();
+    fetchStock();
   }, []);
 
 
@@ -67,11 +67,11 @@ function App() {
             <h1 className={'text-4xl font-semibold text-center'}>Stock Trader</h1>
           </div>
 
-          <div className={'col-span-6  p-3 border-r-4'}>
+          <div className={'col-span-6  p-3 '}>
 
-            <div className={'gap-10'}>
+            <div className={''}>
               <input type="search"
-                     className={'w-1/2 border p-1 border-gray-400 rounded-full'}
+                     className={'w-2/3 border p-2 border-gray-400 rounded-full'}
                      value={searchSymbol}
                      onChange={updateSearchSymbol}
                      placeholder={'Search...'}/>
@@ -100,8 +100,8 @@ function App() {
              <thead >
              <tr>
                <th>Stock</th>
-               <th>Quantity</th>
-               <th>Price</th>
+               <th>Shares</th>
+               <th>Price Per Share</th>
              </tr>
              </thead>
 
